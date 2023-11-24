@@ -1,0 +1,15 @@
+#/usr/bin/bash
+
+pip_install () {
+  pkg_name=$1
+  rm -rf $pkg_name
+  git clone https://github.com/FEniCS/$pkg_name.git
+  cd $pkg_name
+  git checkout $2
+  pip install .
+}
+
+fappend () {
+  fname=$1
+  echo -e $2  | tee -a $fname
+}
